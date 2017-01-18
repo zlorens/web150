@@ -1,3 +1,4 @@
-<script>
+// script file
 
-</script>
+var firstName = 'jeff';
+var lastName = 'jones';
