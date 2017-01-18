@@ -1,0 +1,44 @@
+<script>
+        var vowels = ('aeiou');
+        var short_word = 'ay';
+        var long_word = 'way';
+        var new_sentence = '';
+        var blank_error = "Input can't be translated";
+        var sentence = prompt("enter a phrase");
+        var my_length = sentence.length;
+        // document.write("length: " + my_length);
+        if(my_length==0) {
+            document.write(blank_error);
+        } else {    
+            sentence = sentence.toLowerCase();
+            //document.write(sentence);
+            //document.write();
+            var words = sentence.split(" ");
+            // document.write("words   " + words);
+            // loop through an array called words
+            // index is the zero-based position of each word in the array
+            for (var index in words) {
+                var word = words[index];
+                // slice($start,$end)
+                var letter_1 = word.slice(0,1); // first letter of word
+                var letter_2 = word.slice(1,2); // second letter of word
+                //document.write("<br>letter_1: " + letter_1); // first letter of word
+                //document.write("<br>letter_2: " + letter_2); // second letter of word
+                if (!letter_1.includes(vowels) && !letter_2.includes(vowels)) {
+                    // two consonants
+                    new_sentence = sentence.slice(2,my_length) + sentence.slice(0,2) + short_word;
+                    //new_sentence = letter_1 + letter_2 + short_word;
+                    // document.write("two consonents   ");
+                } else if (!letter_1.includes(vowels)) {
+                    // one consonant
+                    new_sentence = sentence.slice(1,my_length) + sentence.slice(0,1) + short_word;
+                    //new_sentence = sentence + letter_1 + short_word;
+                } else if (letter1.includes(vowels)) {
+                    new_sentence = sentence + long_word;
+                }
+            } // end for var index
+        
+            document.write("<br>old word: " + sentence);
+            document.write("<br>new word: " + new_sentence);
+        }
+    </script>
