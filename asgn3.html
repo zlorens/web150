@@ -1,0 +1,61 @@
+<html>
+    
+<script>
+
+var grades = "jim|25, sue|32, mary|34, ann|22, ted|28, frank|15, lisa|19, mike|30, ahn|26, vishaya|27";
+
+document.write("Original array: " + grades)
+
+var students = grades.split(", ")
+
+students = students.sort()
+
+var numStudents = students.length
+var index = 0
+var max = 0
+var min = 1000
+var maxStudent = ""
+var minStudent = ""
+var firstLetter = ""
+var rest = ""
+var studentName = ""
+var total = 0
+var avg = 0
+var score = 0
+	
+for (index in students) {
+    var studentInfo = students[index].split("|")    
+
+	for (var i=0; i < studentInfo.length; i++) {		
+        firstLetter = studentInfo[0].charAt(0)
+        // remainder of studentInfo array
+        rest = studentInfo[0].slice(1)
+        // capitalize first letter
+        studentName = firstLetter.toUpperCase() + rest
+        document.write("<br><br>" + studentName + " - " + studentInfo[1])
+    }    
+    
+    if(studentInfo[1] > max) {
+        max = studentInfo[1]
+        maxStudent = studentInfo[0]
+    } 
+    
+    if(studentInfo[1] < min) {
+        min = studentInfo[1]
+        minStudent = studentInfo[0]
+    }
+    
+    score = parseInt(studentInfo[1])
+    total += score    
+}
+
+avg = total / numStudents
+// Output
+document.write("<br><br>Total Number of Students: " + numStudents)
+document.write("<br><br>Minimum Score: " + min + " (" + minStudent + ")")
+document.write("<br><br>Maximum Score: " + max + " (" + maxStudent + ")")
+document.write("<br><br>Average Score: " + avg)
+
+</script>
+    
+</html>
