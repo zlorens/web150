@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+
+<h1>Functions and Validation</h1>
+
+<form id="form1" action="#" onsubmit="return validateForm(this);">
+  First Name: <input type="text" name="firstName"><br>
+  Last Name:  <input type="text" name="lastName"><br>
+  Password:&nbsp;&nbsp;  <input type="text" name="password"><br>
+
+  <button >Check</button>
+</form>
+
+<hr><div id="message"></div>
+
+<script>
+    
+function validatePassword(password) {  
+    console.log('validate password')
+    if (password.length < 8) {        
+        return 1;
+    }
+    
+    else if (password == password.toLowerCase()) {
+        console.log('no upper')        
+        return 2;
+    }
+    
+    else if (password == password.toUpperCase()) {
+        console.log('no lower')        
+        return 3;
+    } else { 
+        console.log('valid')        
+        return 0;
+    } // end if else    
+} // end function
+    
+function validateForm(myForm) {
+  var firstName = myForm.firstName.value; // get text of firstName field
+    var lastName = myForm.lastName.value;
+    var password = myForm.password.value;
+    
+    if (firstName.length == 0) {
+        $("#message").html("please enter First name");
+    } else if (lastName.length == 0) {
+        $("#message").html("please enter Last name");
+    } else if (password.length == 0) {
+        $("#message").html("please enter Password"); 
+    } else {
+        var valid = validatePassword(password);
+        if (valid == 1) {
+            $("#message").html("Password must be at least 8 characters");
+        } else if (valid == 2) {
+            $("#message").html("Password must have at least one Upper Case character");
+        } else if (valid == 3) {
+            $("#message").html("Password must have at least one Lower Case character");
+        } else {
+        // success message
+            $("#message").html("Congratulations! All data is good!");
+        }
+    } 
+    
+    return false;
+} // end function
+</script>
+
+</body>
+</html>
